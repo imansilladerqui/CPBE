@@ -9,13 +9,11 @@ use Illuminate\Http\Request;
 class UserController extends Controller {
     public function signup(Request $request) {
         $this->validate($request, [
-            'name' => 'required',
             'email' => 'required|email|unique:tc_users',
             'password' => 'required'
         ]);
 
         $user = new User([
-            'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password'))
         ]);
@@ -28,7 +26,6 @@ class UserController extends Controller {
 
     public function signin(Request $request) {
         $this->validate($request, [
-            'name' => 'required',
             'email' => 'required|email',
             'password' => 'required'
         ]);
