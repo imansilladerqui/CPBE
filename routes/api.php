@@ -17,8 +17,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'cors'], function() { 
+Route::group(['middleware' => ['cors', 'auth.jwt']], function() { 
 
+    //----------USUARIOS API---------//
+
+    Route::post('/usuarios', [
+        'uses' => 'UserController@signup'
+    ]);
+
+    Route::post('/usuarios/sesion', [
+        'uses' => 'UserController@signin'
+    ]);
+
+    //----------TODAS LAS COTIZACIONES---------//
+    
     Route::get('all', 'allEntidadesController@index');
 
 
