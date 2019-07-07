@@ -52,7 +52,8 @@ class CasaVaccaroController extends Controller
      */
     public function show($id)
     {
-        //
+        $vaccaro = CasaVaccaro::find($id);
+        return $vaccaro;
     }
 
     /**

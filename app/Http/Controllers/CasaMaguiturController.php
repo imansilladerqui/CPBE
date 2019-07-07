@@ -52,7 +52,8 @@ class CasaMaguiturController extends Controller
      */
     public function show($id)
     {
-        //
+        $maguitur = CasaMaguitur::find($id);
+        return $maguitur;
     }
 
     /**

@@ -49,4 +49,17 @@ class UserController extends Controller {
             'token' => $token
         ], 200); 
     }
+
+    public function getall()
+    {
+        $users = User::all();
+        return $users;
+    }
+
+    public function getuserid($id)
+    {
+        $user = User::find($id);
+        return $user;
+        
+    }
 }

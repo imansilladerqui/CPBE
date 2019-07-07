@@ -52,7 +52,8 @@ class BancoColumbiaController extends Controller
      */
     public function show($id)
     {
-        //
+        $columbia = BancoColumbia::find($id);
+        return $columbia;
     }
 
     /**

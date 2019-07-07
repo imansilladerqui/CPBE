@@ -17,22 +17,34 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => ['cors', 'auth.jwt']], function() { 
+//----------USUARIOS API SIN TOKEN---------//
 
-    //----------USUARIOS API---------//
+Route::post('/usuarios', [
+    'uses' => 'UserController@signup'
+]);
 
-    Route::post('/usuarios', [
-        'uses' => 'UserController@signup'
+
+Route::post('/usuarios/sesion', [
+    'uses' => 'UserController@signin'
+]);
+
+
+
+Route::group(['middleware' => ['cors', 'jwt.verify']], function() { 
+
+    //----------USUARIOS API CON TOKEN---------//
+
+    Route::get('/usuarios/todos', [
+        'uses' => 'UserController@getall'
     ]);
 
-    Route::post('/usuarios/sesion', [
-        'uses' => 'UserController@signin'
+    Route::get('/usuarios/{id}', [
+        'uses' => 'UserController@getuserid'
     ]);
 
     //----------TODAS LAS COTIZACIONES---------//
     
     Route::get('all', 'allEntidadesController@index');
-
 
     //----------BANCO COLUMBIA---------//
 

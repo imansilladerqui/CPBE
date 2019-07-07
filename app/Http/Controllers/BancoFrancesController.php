@@ -52,7 +52,8 @@ class BancoFrancesController extends Controller
      */
     public function show($id)
     {
-        //
+        $frances = BancoFrances::find($id);
+        return $frances;
     }
 
     /**

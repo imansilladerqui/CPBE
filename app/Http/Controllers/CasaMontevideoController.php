@@ -52,7 +52,8 @@ class CasaMontevideoController extends Controller
      */
     public function show($id)
     {
-        //
+        $montevideo = CasaMontevideo::find($id);
+        return $montevideo;
     }
 
     /**

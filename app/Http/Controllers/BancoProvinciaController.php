@@ -52,7 +52,8 @@ class BancoProvinciaController extends Controller
      */
     public function show($id)
     {
-        //
+        $provincia = BancoProvincia::find($id);
+        return $provincia;
     }
 
     /**

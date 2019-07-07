@@ -41,7 +41,8 @@ class BancoSupervielleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $supervielle = BancoSupervielle::find($id);
+        return $supervielle;
     }
 
     /**

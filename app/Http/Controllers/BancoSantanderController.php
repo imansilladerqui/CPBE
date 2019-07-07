@@ -52,7 +52,8 @@ class BancoSantanderController extends Controller
      */
     public function show($id)
     {
-        //
+        $santander = Santander::find($id);
+        return $santander;
     }
 
     /**

@@ -52,7 +52,8 @@ class BancoNacionController extends Controller
      */
     public function show($id)
     {
-        //
+        $nacion = BancoNacion::find($id);
+        return $nacion;
     }
 
     /**

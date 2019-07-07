@@ -52,7 +52,8 @@ class CasaAlpeController extends Controller
      */
     public function show($id)
     {
-        //
+        $alpe = CasaAlpe::find($id);
+        return $alpe;
     }
 
     /**

@@ -52,7 +52,8 @@ class BancoPatagoniaController extends Controller
      */
     public function show($id)
     {
-        //
+        $patagonia = BancoPatagonia::find($id);
+        return $patagonia;
     }
 
     /**

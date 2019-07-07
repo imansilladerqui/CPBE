@@ -52,7 +52,8 @@ class CasaMaxintaController extends Controller
      */
     public function show($id)
     {
-        //
+        $maxinta = CasaMaxinta::find($id);
+        return $maxinta;
     }
 
     /**

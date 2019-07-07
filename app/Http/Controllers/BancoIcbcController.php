@@ -52,7 +52,8 @@ class BancoIcbcController extends Controller
      */
     public function show($id)
     {
-        //
+        $icbc = BancoIcbc::find($id);
+        return $icbc;
     }
 
     /**

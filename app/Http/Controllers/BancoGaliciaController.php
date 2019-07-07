@@ -52,7 +52,8 @@ class BancoGaliciaController extends Controller
      */
     public function show($id)
     {
-        //
+        $galicia = BancoGalicia::find($id);
+        return $galicia;
     }
 
     /**
