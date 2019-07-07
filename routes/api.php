@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::group(['middleware' => 'cors'], function() { 
+
 //----------USUARIOS API SIN TOKEN---------//
 
 Route::post('/usuarios', [
@@ -28,7 +30,7 @@ Route::post('/usuarios/sesion', [
     'uses' => 'UserController@signin'
 ]);
 
-
+});
 
 Route::group(['middleware' => ['cors', 'jwt.verify']], function() { 
 
