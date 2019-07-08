@@ -13,36 +13,44 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::group(['middleware' => 'cors'], function() { 
+
+
 
 //----------USUARIOS API SIN TOKEN---------//
 
-Route::post('/usuarios', [
-    'uses' => 'UserController@signup'
-]);
+Route::group(['middleware' => 'cors'], function() { 
+
+    Route::post('/signup', [
+        'uses' => 'UserController@signup'
+    ]);
 
 
-Route::post('/usuarios/sesion', [
-    'uses' => 'UserController@signin'
-]);
+    Route::post('/login', [
+        'uses' => 'UserController@signin'
+    ]);
 
 });
 
-Route::group(['middleware' => ['cors', 'jwt.verify']], function() { 
 
-    //----------USUARIOS API CON TOKEN---------//
 
-    Route::get('/usuarios/todos', [
-        'uses' => 'UserController@getall'
-    ]);
 
-    Route::get('/usuarios/{id}', [
-        'uses' => 'UserController@getuserid'
-    ]);
+//----------USUARIOS API CON TOKEN---------//
+
+Route::group(['middleware' => ['cors', 'jwt']], function() { 
+
+    Route::get('usuario', 'UserController@user');
+
+    // Route::get('/usuarios/todos', [
+    //     'uses' => 'UserController@getall'
+    // ]);
+
+    // Route::get('/usuarios/{id}', [
+    //     'uses' => 'UserController@getuserid'
+    // ]);
 
     //----------TODAS LAS COTIZACIONES---------//
     
