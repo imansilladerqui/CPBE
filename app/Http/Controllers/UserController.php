@@ -54,19 +54,17 @@ class UserController extends Controller {
 
     public function user(Request $request)
     {
-        return response()->json($request->user());
+        $user = $request->user();
+
+        $response= [
+            'id' => $user->id, 
+            'email'=> $user->email,
+            'created_at' => $user->created_at->toDateTimeString(),
+            'updated_at' => $user->updated_at->toDateTimeString(),
+            'roleId' => $user->roles->first()->id,
+            'roleName' => $user->roles->first()->name,
+        ];
+
+        return response()->json($response);
     }
-
-    // public function getall()
-    // {
-    //     $users = User::all();
-    //     return $users;
-    // }
-
-    // public function getuserid($id)
-    // {
-    //     $user = User::find($id);
-    //     return $user;
-        
-    // }
 }
