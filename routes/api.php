@@ -22,7 +22,7 @@ use Illuminate\Http\Request;
 
 //----------USUARIOS API SIN TOKEN---------//
 
-Route::group(['middleware' => 'cors'], function() { 
+Route::group(['middleware' => ['api', 'cors']], function() { 
 
     Route::post('/signup', [
         'uses' => 'UserController@signup'
@@ -49,7 +49,7 @@ Route::group(['middleware' => 'cors'], function() {
 
         //----------TODAS LAS COTIZACIONES---------//
         
-        Route::get('all', 'allEntidadesController@index');
+        Route::get('entidadesAll', 'allEntidadesController@index');
 
         //----------BANCO COLUMBIA---------//
 
