@@ -37,15 +37,11 @@ Route::group(['middleware' => ['api', 'cors']], function() {
 
     Route::group(['middleware' => 'jwt'], function() { 
 
+        //----------API DE USUARIOS---------//
+
         Route::get('usuario', 'UserController@user');
-
-        // Route::get('/usuarios/todos', [
-        //     'uses' => 'UserController@getall'
-        // ]);
-
-        // Route::get('/usuarios/{id}', [
-        //     'uses' => 'UserController@getuserid'
-        // ]);
+        Route::get('allusuarios', 'UserController@allusuarios');
+        Route::get('/usuario/{id}', 'UserController@getusuario');
 
         //----------TODAS LAS COTIZACIONES---------//
         

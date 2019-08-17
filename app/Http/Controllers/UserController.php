@@ -7,6 +7,8 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use JWTAuth;
 use Illuminate\Http\Request;
 
+use App\Http\Resources\allUsuarios as allUsuarios;
+
 class UserController extends Controller {
     
     public function signup(Request $request) {
@@ -66,5 +68,21 @@ class UserController extends Controller {
         ];
 
         return response()->json($response);
+    }
+
+    public function allusuarios()
+    {
+
+        $user = User::orderBy('id', 'desc')->get();
+
+        return allUsuarios::collection($user);
+    }
+
+    public function getusuario($id)
+    {
+
+        $user = User::where('id', $id)->get();
+
+        return allUsuarios::collection($user);
     }
 }
