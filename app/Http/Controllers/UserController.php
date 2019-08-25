@@ -72,17 +72,19 @@ class UserController extends Controller {
 
     public function allusuarios()
     {
-
         $user = User::orderBy('id', 'desc')->get();
-
         return allUsuarios::collection($user);
     }
 
     public function getusuario($id)
     {
-
         $user = User::where('id', $id)->get();
-
         return allUsuarios::collection($user);
+    }
+
+    public function deleteusuario($id)
+    {
+        $user = User::find($id);
+        $user->delete();
     }
 }

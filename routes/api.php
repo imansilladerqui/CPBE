@@ -39,9 +39,11 @@ Route::group(['middleware' => ['api', 'cors']], function() {
 
         //----------API DE USUARIOS---------//
 
-        Route::get('usuario', 'UserController@user');
         Route::get('allusuarios', 'UserController@allusuarios');
-        Route::get('/usuario/{id}', 'UserController@getusuario');
+
+        Route::get('usuario', 'UserController@user');
+        Route::get('usuario/{id}', 'UserController@getusuario');
+        Route::delete('usuario/{id}', 'UserController@deleteusuario');
 
         //----------TODAS LAS COTIZACIONES---------//
         
