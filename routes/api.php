@@ -37,10 +37,14 @@ Route::group(['middleware' => ['api', 'cors']], function() {
 
     Route::group(['middleware' => 'jwt'], function() { 
 
+        
+        //----------API DE PROFILE---------//
+
+        Route::get('profile/{id}', 'UserController@getProfile');
+
         //----------API DE USUARIOS---------//
 
         Route::get('allusuarios', 'UserController@allusuarios');
-
         Route::get('usuario', 'UserController@user');
         Route::get('usuario/{id}', 'UserController@getusuario');
         Route::delete('usuario/{id}', 'UserController@deleteusuario');

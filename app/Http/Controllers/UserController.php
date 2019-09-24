@@ -82,6 +82,16 @@ class UserController extends Controller {
         return allUsuarios::collection($user);
     }
 
+    public function getProfile(Request $request, $id)
+    {
+        if(Auth::id() == $id) {
+            $user = User::where('id', $id)->get();
+            return allUsuarios::collection($user);
+        } else {
+
+        }
+    }
+
     public function deleteusuario($id)
     {
         $user = User::find($id);
