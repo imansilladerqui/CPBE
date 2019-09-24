@@ -65,6 +65,8 @@ class UserController extends Controller {
         $response= [
             'id' => $user->id, 
             'email'=> $user->email,
+            'nombre'=> $user->nombre,
+            'apellido'=> $user->apellido,
             'created_at' => $user->created_at->toDateTimeString(),
             'updated_at' => $user->updated_at->toDateTimeString(),
             'roleId' => $user->roles->first()->id,
