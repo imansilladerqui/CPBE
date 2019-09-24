@@ -37,16 +37,14 @@ class UserController extends Controller {
 
     public function signin(Request $request) {
         $this->validate($request, [
-            'nombre' => 'required',
-            'apellido' => 'required',
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        $credentials = $request->only('nombre', 'apellido', 'email', 'password');
+        $credentials = $request->only('email', 'password');
         try {
             if(!$token = JWTAuth::attempt($credentials)) {
                 return response()->json([
-                    'error' => 'Credenciales invalidaaaaaaaas!'
+                    'error' => 'Credenciales invalidas!'
                 ], 401);
             }
         } catch(JWTException $e) {
