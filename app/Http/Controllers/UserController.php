@@ -13,11 +13,15 @@ class UserController extends Controller {
     
     public function signup(Request $request) {
         $this->validate($request, [
+            'nombre' => 'required',
+            'apellido' => 'required',
             'email' => 'required|email|unique:tc_users',
             'password' => 'required'
         ]);
 
         $user = new User([
+            'nombre' => $request->input('nombre'),
+            'apellido' => $request->input('apellido'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password'))
         ]);
@@ -82,6 +86,12 @@ class UserController extends Controller {
         return allUsuarios::collection($user);
     }
 
+    public function deleteusuario($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+    }
+
     public function getProfile(Request $request, $id)
     {
         if(Auth::id() == $id) {
@@ -92,9 +102,12 @@ class UserController extends Controller {
         }
     }
 
-    public function deleteusuario($id)
+    public function deleteProfile(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->delete();
+        if(Auth::id() == $id) {
+            $user = User::find($id);
+            $user->delete();
+        }
     }
+
 }

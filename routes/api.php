@@ -41,6 +41,7 @@ Route::group(['middleware' => ['api', 'cors']], function() {
         //----------API DE PROFILE---------//
 
         Route::get('profile/{id}', 'UserController@getProfile');
+        Route::delete('profile/{id}', 'UserController@deletetProfile');
 
         //----------API DE USUARIOS---------//
 
