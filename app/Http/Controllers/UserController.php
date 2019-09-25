@@ -98,8 +98,8 @@ class UserController extends Controller {
     public function getProfile(Request $request, $id)
     {
         if(JWTAuth::fromUser(User::find($id))) {
-            $user = User::where('id', $id)->get();
-            return response()->json(allUsuarios::collection($user));
+            $user = $request->user();
+            return $user;
         } else {
 
         }
