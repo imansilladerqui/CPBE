@@ -100,11 +100,6 @@ class UserController extends Controller {
         if(JWTAuth::fromUser(User::find($id))) {
             $user = User::where('id', $id)->get();
             return response()->json(allUsuarios::collection($user));
-
-            // $user = JWTAuth::fromUser(User::find($id));
-
-            
-            return response()->json($response);
         } else {
 
         }
