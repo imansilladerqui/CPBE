@@ -7,6 +7,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use JWTAuth;
 use Illuminate\Http\Request;
 
+
 use App\Http\Resources\allUsuarios as allUsuarios;
 
 class UserController extends Controller {
@@ -96,7 +97,7 @@ class UserController extends Controller {
 
     public function getProfile(Request $request, $id)
     {
-        if(Auth::id() == $id) {
+        if(JWTAuth::fromUser(User::find($id))) {
             $user = User::where('id', $id)->get();
             return allUsuarios::collection($user);
         } else {
