@@ -17,7 +17,9 @@ class allUsuarios extends JsonResource
         // return parent::toArray($request);
 
         return [
-            'id' => $this->id, 
+            'id' => $this->id,
+            'nombre'=> $this->nombre,
+            'apellido'=> $this->apellido, 
             'email'=> $this->email,
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString(),

@@ -99,7 +99,7 @@ class UserController extends Controller {
     {
         if(JWTAuth::fromUser(User::find($id))) {
             $user = User::where('id', $id)->get();
-            return allUsuarios::collection($user);
+            return allUsuarios::collection($user)->toJson();
         } else {
 
         }
