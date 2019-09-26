@@ -65,6 +65,7 @@ class UserController extends Controller {
 
         $response= [
             'id' => $user->id, 
+            'avatar'=> $user->avatar,
             'email'=> $user->email,
             'nombre'=> $user->nombre,
             'apellido'=> $user->apellido,
@@ -100,9 +101,14 @@ class UserController extends Controller {
         if(JWTAuth::fromUser(User::find($id))) {
             $user = $request->user();
             return $user;
-        } else {
-
         }
+
+        return;
+    }
+
+    public function postProfile(Request $request, $id)
+    {
+       
     }
 
     public function deleteProfile(Request $request, $id)
