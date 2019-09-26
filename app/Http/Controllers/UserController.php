@@ -5,6 +5,7 @@ use App\Role;
 use App\User;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use JWTAuth;
+use Auth;
 use Illuminate\Http\Request;
 
 
@@ -98,17 +99,31 @@ class UserController extends Controller {
 
     public function getProfile(Request $request, $id)
     {
-        if(JWTAuth::fromUser(User::find($id))) {
-            $user = $request->user();
-            return $user;
-        }
-
-        return;
+        $user = Auth::user();
+        return $user;
     }
 
-    public function postProfile(Request $request, $id)
+    public function updateProfile(Request $request)
     {
-       
+        $user = Auth::user();
+
+        $data = $this->validate($request, [
+            'nombre' => 'required',
+            'apellido' => 'required',
+        ]);
+
+        $user->name = $data['nombre'];
+        $user->email = $data['apellido'];
+
+       if($request->hasFile('avatar')) {
+           $avatar = $request->file('avatar');
+           $filename = time() . '.' . $avatar->getClientOriginalExtension();
+           Image::make($avatar)->resize(300,300)->save(public_path('/uploads/avatars/'.$filename));
+
+           $user->avatar = $filename;
+       }
+
+       $user->save();
     }
 
     public function deleteProfile(Request $request, $id)

@@ -14,7 +14,7 @@ class AddAvatarColumnToUserTable extends Migration
     public function up()
     {
         Schema::table('tc_users', function (Blueprint $table) {
-            $table->string('avatar')->default('/users/default.png');
+            $table->string('avatar')->default('http://protected-mountain-77919.herokuapp.com/uploads/avatars/default.png');
         });
     }
 
