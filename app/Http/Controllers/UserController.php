@@ -126,12 +126,10 @@ class UserController extends Controller {
        $user->save();
     }
 
-    public function deleteProfile(Request $request, $id)
+    public function deleteProfile(Request $request)
     {
-        if(Auth::id() == $id) {
-            $user = User::find($id);
-            $user->delete();
-        }
+        $user = Auth::user();
+        $user->delete();
     }
 
 }
