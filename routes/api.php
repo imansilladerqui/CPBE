@@ -51,10 +51,6 @@ Route::group(['middleware' => ['api', 'cors']], function() {
         Route::get('usuario/{id}', 'UserController@getusuario');
         Route::delete('usuario/{id}', 'UserController@deleteusuario');
 
-        //----------TODAS LAS COTIZACIONES---------//
-        
-        Route::get('entidadesAll', 'allEntidadesController@index');
-
         //----------BANCO COLUMBIA---------//
 
         //LIST ALL COTIZACIONES
