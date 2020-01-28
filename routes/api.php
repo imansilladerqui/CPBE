@@ -38,6 +38,10 @@ Route::group(['middleware' => ['api', 'cors']], function() {
     Route::group(['middleware' => 'jwt'], function() { 
 
         
+        //----------API DE DASHBOARD---------//
+
+        Route::get('dashboard', 'DashboardController@index');
+
         //----------API DE PROFILE---------//
 
         Route::get('profile/{id}', 'UserController@getProfile');
